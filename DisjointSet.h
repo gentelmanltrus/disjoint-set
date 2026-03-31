@@ -9,13 +9,13 @@ class DSException; // deklaracija
 
 class DisjointSet {
 private:
-    class Impl;     // скрытая реализация
-    Impl* pImpl;    // указатель
+    class Impl;     // hidden realisation
+    Impl* pImpl;    // pointer
 
 public:
-    // constructors / destructor
+    // constructors - destructor
     DisjointSet();
-    DisjointSet(const DisjointSet& other); // deep copy
+    DisjointSet(const DisjointSet& other); //  copy
     DisjointSet& operator=(const DisjointSet& other);
     ~DisjointSet();
 
