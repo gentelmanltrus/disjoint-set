@@ -1,0 +1,31 @@
+# Makefile for DisjointSet project
+CXX = g++
+CXXFLAGS = -std=c++17 -Wall -Wextra
+
+all: demo test
+
+DisjointSet.o: DisjointSet.cpp DisjointSet.h
+	$(CXX) $(CXXFLAGS) -c DisjointSet.cpp
+
+demo.o: demo.cpp DisjointSet.h
+	$(CXX) $(CXXFLAGS) -c demo.cpp
+
+test.o: test.cpp DisjointSet.h
+	$(CXX) $(CXXFLAGS) -c test.cpp
+
+demo: DisjointSet.o demo.o
+	$(CXX) $(CXXFLAGS) -o demo DisjointSet.o demo.o
+
+test: DisjointSet.o test.o
+	$(CXX) $(CXXFLAGS) -o test DisjointSet.o test.o
+
+run_demo: demo
+	./demo
+
+run_test: test
+	./test
+
+clean:
+	rm -f *.o demo test log.txt
+
+rebuild: clean all
