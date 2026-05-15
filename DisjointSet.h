@@ -2,23 +2,41 @@
 #define DISJOINTSET_H
 
 #include <string>
-
+#include <utility> //for std::pair
 namespace myds {
 
-class DSException; // deklaracija
+class DSException: public std::exception {
+public:
+    const char* what() const noexcept override;
+}; // deklaracija
 
 class DisjointSet {
 private:
-    class Impl;     // скрытая реализация
-    Impl* pImpl;    // указатель
+    class Impl
+    {
+    private:
+        int *parent; //dynamic array
+        int size;// logical size
+     // realizacija
 
 public:
     // constructors / destructor
+    Impl();//empty
+    Impl(const Impl& other);          // copy
+    Impl& operator=(const Impl& other); // copy‑assign
+    ~Impl();
+                            
+    int find(int x) const;
+
+    }
+    Impl* pImpl;    // pointer to implementation
+    friend class TestDisjointSet;
+    public:
+    // lifecycle
     DisjointSet();
-    DisjointSet(const DisjointSet& other); // deep copy
+    DisjointSet(const DisjointSet& other);
     DisjointSet& operator=(const DisjointSet& other);
     ~DisjointSet();
-
     // CRUD / DAVE
     void makeSet(int x);    // create
     int find(int x) const;     // read
@@ -42,13 +60,6 @@ public:
     bool operator>=(const DisjointSet& other) const;
 
     std::string toString() const;
-};
-
-class DSException : public std::exception {
-public:
-    const char* what() const noexcept override {
-        return "DisjointSet error";
-    }
 };
 
 }
