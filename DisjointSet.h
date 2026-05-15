@@ -12,6 +12,7 @@ public:
 
 class DisjointSet {
 private:
+<<<<<<< HEAD
     class Impl
     {
     private:
@@ -35,6 +36,15 @@ public:
     // lifecycle
     DisjointSet();
     DisjointSet(const DisjointSet& other);
+=======
+    class Impl;     // hidden realisation
+    Impl* pImpl;    // pointer
+
+public:
+    // constructors - destructor
+    DisjointSet();
+    DisjointSet(const DisjointSet& other); //  copy
+>>>>>>> 63cfd2802717b4a0bf88147a8de9d5c55a15beef
     DisjointSet& operator=(const DisjointSet& other);
     ~DisjointSet();
     // CRUD / DAVE
