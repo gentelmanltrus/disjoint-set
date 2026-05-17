@@ -6,7 +6,7 @@
 using namespace std;
 using namespace myds;
 
-// ── forward declare Impl + define it in the cpp
+//  declare Impl + define it in the cpp
 
 namespace myds {
 
@@ -26,7 +26,7 @@ public:
 } // namespace myds
 
 
-// ── Impl methods
+//  Impl methods
 
 DisjointSet::Impl::Impl()
     : parent(nullptr), size(0)
@@ -75,7 +75,7 @@ int DisjointSet::Impl::find(int x) const {
 }
 
 
-// ── DisjointSet public methods
+//DisjointSet public
 
 DisjointSet::DisjointSet()
     : pImpl(new Impl())
